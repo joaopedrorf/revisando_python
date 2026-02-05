@@ -5,11 +5,23 @@ ARQUIVO_TAREFAS = "tasks.json"
 
 
 def carregar_tarefas():
-    pass
+    if not os.path.exists(ARQUIVO_TAREFAS):
+        return []
+
+    try:
+        with open(ARQUIVO_TAREFAS, "r", encoding="utf-8") as arquivo:
+            return json.load(arquivo)
+    except (json.JSONDecodeError, IOError):
+        print("Erro ao carregar tarefas. Iniciando lista vazia.")
+        return []
 
 
 def salvar_tarefas(tarefas):
-    pass
+    try:
+        with open(ARQUIVO_TAREFAS, "w", encoding="utf-8") as arquivo:
+            json.dump(tarefas, arquivo, indent=4, ensure_ascii=False)
+    except IOError:
+        print("Erro ao salvar tarefas.")
 
 
 def listar_tarefas(tarefas):
