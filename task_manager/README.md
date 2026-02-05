@@ -1,0 +1,1 @@
+Gerenciador de tarefas em Python com persistência em JSON, desenvolvido para reforçar fundamentos da linguagem, lógica de programação e boas práticas.

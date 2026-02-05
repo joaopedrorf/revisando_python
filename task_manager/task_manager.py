@@ -51,9 +51,30 @@ def adicionar_tarefa(tarefas):
 
 
 def concluir_tarefa(tarefas):
-    if tarefas[indice]["concluida"]:
-    print("⚠️ Esta tarefa já está concluída.")
-    return
+    if not tarefas:
+        print("⚠️ Não há tarefas para concluir.")
+        return
+    
+    listar_tarefas(tarefas)
+
+    try:
+        indice = int(input("Digite o número da tarefa concluída: ")) - 1
+
+        if indice < 0 or indice >= len(tarefas):
+            print("❌ Número inválido.")
+            return
+
+        if tarefas[indice]["concluida"]:
+            print("⚠️ Esta tarefa já está concluída.")
+            return
+        
+        tarefas[indice]["concluida"] = True
+        print("✅ Tarefa marcada como concluída.")
+
+    except ValueError:
+        print("❌ Digite um número válido.")
+
+    
 
 
 def remover_tarefa(tarefas):
@@ -104,7 +125,6 @@ def main():
             adicionar_tarefa(tarefas)
             salvar_tarefas(tarefas)
         elif opcao == "3":
-            listar_tarefas(tarefas)
             concluir_tarefa(tarefas)
             salvar_tarefas(tarefas)
         elif opcao == "4":
