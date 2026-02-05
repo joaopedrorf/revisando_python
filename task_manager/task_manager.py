@@ -26,14 +26,12 @@ def salvar_tarefas(tarefas):
 
 def listar_tarefas(tarefas):
     if not tarefas:
-        print("\nNenhuma tarefa cadastrada.\n")
+        print("📭 Nenhuma tarefa cadastrada.")
         return
 
-    print("\n=== SUAS TAREFAS ===")
-    for indice, tarefa in enumerate(tarefas, start=1):
-        status = "✔" if tarefa["concluida"] else "✗"
-        print(f"{indice}. [{status}] {tarefa['titulo']}")
-    print()
+    for i, tarefa in enumerate(tarefas, start=1):
+        status = "✔️" if tarefa["concluida"] else "❌"
+        print(f"{i}. [{status}] {tarefa['titulo']}")
 
 
 def adicionar_tarefa(tarefas):
@@ -53,7 +51,22 @@ def adicionar_tarefa(tarefas):
 
 
 def concluir_tarefa(tarefas):
-    pass
+    if not tarefas:
+        print("⚠️ Não há tarefas para concluir.")
+        return
+
+    try:
+        indice = int(input("Digite o número da tarefa concluída: ")) - 1
+
+        if indice < 0 or indice >= len(tarefas):
+            print("❌ Número inválido.")
+            return
+
+        tarefas[indice]["concluida"] = True
+        print("✅ Tarefa marcada como concluída.")
+
+    except ValueError:
+        print("❌ Digite um número válido.")
 
 
 def remover_tarefa(tarefas):
