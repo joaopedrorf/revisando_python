@@ -25,7 +25,15 @@ def salvar_tarefas(tarefas):
 
 
 def listar_tarefas(tarefas):
-    pass
+    if not tarefas:
+        print("\nNenhuma tarefa cadastrada.\n")
+        return
+
+    print("\n=== SUAS TAREFAS ===")
+    for indice, tarefa in enumerate(tarefas, start=1):
+        status = "✔" if tarefa["concluida"] else "✗"
+        print(f"{indice}. [{status}] {tarefa['titulo']}")
+    print()
 
 
 def adicionar_tarefa(tarefas):
@@ -51,6 +59,8 @@ def menu():
 
 def main():
     tarefas = carregar_tarefas()
+    listar_tarefas(tarefas)
+
 
     while True:
         menu()
