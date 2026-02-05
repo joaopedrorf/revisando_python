@@ -70,7 +70,26 @@ def concluir_tarefa(tarefas):
 
 
 def remover_tarefa(tarefas):
-    pass
+    if not tarefas:
+        print("\nNenhuma tarefa para remover.\n")
+        return
+
+    listar_tarefas(tarefas)
+
+    try:
+        numero = int(input("\nDigite o número da tarefa a remover: "))
+
+        indice = numero - 1
+
+        if indice < 0 or indice >= len(tarefas):
+            print("\nNúmero inválido.\n")
+            return
+
+        tarefa_removida = tarefas.pop(indice)
+        print(f"\nTarefa '{tarefa_removida['titulo']}' removida com sucesso.\n")
+
+    except ValueError:
+        print("\nPor favor, digite um número válido.\n")
 
 
 def menu():
@@ -84,6 +103,7 @@ def menu():
 
 def main():
     tarefas = carregar_tarefas()
+    
     listar_tarefas(tarefas)
 
 
