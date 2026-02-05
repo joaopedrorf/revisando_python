@@ -37,7 +37,19 @@ def listar_tarefas(tarefas):
 
 
 def adicionar_tarefa(tarefas):
-    pass
+    titulo = input("Digite o título da tarefa: ").strip()
+
+    if not titulo:
+        print("❌ O título não pode ser vazio.")
+        return
+
+    tarefa = {
+        "titulo": titulo,
+        "concluida": False
+    }
+
+    tarefas.append(tarefa)
+    print("✅ Tarefa adicionada com sucesso.")
 
 
 def concluir_tarefa(tarefas):
@@ -70,9 +82,10 @@ def main():
             listar_tarefas(tarefas)
         elif opcao == "2":
             adicionar_tarefa(tarefas)
-            salvar_tarefas(tarefas)
         elif opcao == "3":
             concluir_tarefa(tarefas)
+        elif opcao == "4":
+            remover_tarefa(tarefas)         
             salvar_tarefas(tarefas)
         elif opcao == "4":
             remover_tarefa(tarefas)
