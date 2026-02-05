@@ -79,7 +79,7 @@ def concluir_tarefa(tarefas):
 
 def remover_tarefa(tarefas):
     if not tarefas:
-        print("\nNenhuma tarefa para remover.\n")
+        print("📭 Nenhuma tarefa para remover.")
         return
 
     listar_tarefas(tarefas)
