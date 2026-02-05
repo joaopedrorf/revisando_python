@@ -29,10 +29,6 @@ def listar_tarefas(tarefas):
         print("📭 Nenhuma tarefa cadastrada.")
         pausar()
         return
-    
-    if all(tarefa["concluida"] for tarefa in tarefas):
-        print("🎉 Todas as tarefas estão concluídas!")
-        return
 
     print("\n=== SUAS TAREFAS ===")
     for i, tarefa in enumerate(tarefas, start=1):
