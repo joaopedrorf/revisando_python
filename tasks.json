@@ -13,6 +13,18 @@
     },
     {
         "titulo": "igug",
-        "concluida": false
+        "concluida": true
+    },
+    {
+        "titulo": "Aprender python",
+        "concluida": true
+    },
+    {
+        "titulo": "iopj",
+        "concluida": true
+    },
+    {
+        "titulo": "giu",
+        "concluida": true
     }
 ]

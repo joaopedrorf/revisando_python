@@ -27,11 +27,19 @@ def salvar_tarefas(tarefas):
 def listar_tarefas(tarefas):
     if not tarefas:
         print("📭 Nenhuma tarefa cadastrada.")
+        pausar()
+        return
+    
+    if all(tarefa["concluida"] for tarefa in tarefas):
+        print("🎉 Todas as tarefas estão concluídas!")
         return
 
+    print("\n=== SUAS TAREFAS ===")
     for i, tarefa in enumerate(tarefas, start=1):
         status = "✔️" if tarefa["concluida"] else "❌"
         print(f"{i}. [{status}] {tarefa['titulo']}")
+
+    pausar()
 
 
 def adicionar_tarefa(tarefas):
@@ -72,9 +80,7 @@ def concluir_tarefa(tarefas):
         print("✅ Tarefa marcada como concluída.")
 
     except ValueError:
-        print("❌ Digite um número válido.")
-
-    
+        print("❌ Digite um número válido.")    
 
 
 def remover_tarefa(tarefas):
@@ -135,6 +141,10 @@ def main():
             break
         else:
             print("Opção inválida.")
+
+
+def pausar():
+    input("\nPressione ENTER para voltar...")
 
 
 if __name__ == "__main__":
